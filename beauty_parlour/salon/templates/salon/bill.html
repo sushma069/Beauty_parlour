@@ -1,0 +1,9 @@
+{% extends 'salon/base.html' %}
+{% block content %}
+<h2>Invoice</h2>
+<p><strong>Customer:</strong> {{ bill.appointment.customer.name }}</p>
+<p><strong>Service:</strong> {{ bill.appointment.service.name }}</p>
+<p><strong>Total Amount:</strong> ${{ bill.total_amount }}</p>
+<p><strong>Date:</strong> {{ bill.created_at }}</p>
+{% endblock %}
+#bill.html

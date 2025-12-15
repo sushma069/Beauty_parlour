@@ -1,0 +1,37 @@
+{% extends 'salon/base.html' %}
+{% block content %}
+<h2>Appointments</h2>
+
+<form method="get" class="row mb-3">
+    <div class="col-10">
+        <input type="text" name="q" class="form-control"
+               placeholder="Search by customer/service..."
+               value="{{ query }}">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary w-100">Search</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Customer</th>
+        <th>Service</th>
+        <th>Staff</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+    </tr>
+    {% for a in appointments %}
+    <tr>
+        <td>{{ a.customer.name }}</td>
+        <td>{{ a.service.name }}</td>
+        <td>{{ a.staff.name }}</td>
+        <td>{{ a.date }}</td>
+        <td>{{ a.time }}</td>
+        <td>{{ a.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+#appiontments.py

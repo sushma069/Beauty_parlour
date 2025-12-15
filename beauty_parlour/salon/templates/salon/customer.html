@@ -1,0 +1,38 @@
+{% extends 'salon/base.html' %}
+{% block content %}
+<h2>Customers</h2>
+
+<form method="get" class="row mb-3">
+    <div class="col-10">
+        <input type="text" name="q" class="form-control"
+               placeholder="Search customers..."
+               value="{{ query }}">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary w-100">Search</button>
+    </div>
+</form>
+
+<a href="{% url 'customer_add' %}" class="btn btn-success mb-3">Add Customer</a>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    {% for c in customers %}
+    <tr>
+        <td>{{ c.name }}</td>
+        <td>{{ c.phone }}</td>
+        <td>{{ c.email }}</td>
+        <td>
+            <a href="{% url 'customer_edit' c.id %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'customer_delete' c.id %}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+#customer.html

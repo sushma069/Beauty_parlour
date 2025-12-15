@@ -1,0 +1,33 @@
+{% extends 'salon/base.html' %}
+{% block content %}
+<h2>Inventory</h2>
+
+<form method="get" class="row mb-3">
+    <div class="col-10">
+        <input type="text" name="q" class="form-control"
+               placeholder="Search inventory items..."
+               value="{{ query }}">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary w-100">Search</button>
+    </div>
+</form>
+
+<a href="{% url 'inventory_add' %}" class="btn btn-success mb-3">Add Item</a>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.item_name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+#inventory.html
